@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+    var ProductDetails = ViewBag.ProductDetails;
+}
+<style>
+    .sidebar {
+        background-color: #e2e2e2;
+        border: white solid 1px;
+        border-radius: 5px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .pp {
+        margin-left: 255px;
+    }
+
+</style>
+
+<title>ProductDetails</title>
+
+<div class="container-fluid m-5">
+    <div class="row">
+        <div class="col-3 sidebar ">
+            <div class="app-sidebar-logo px-6 text-center">
+                <a>
+                    <img src="~/image/delivery_3261651.png" alt="Logo" width="50" height="50" class="m-3 ">
+                </a>
+            </div>
+            <div>
+                <img src="~/image/menu_5253782.png" alt="logo" width="20" height="20" class="m-3">
+                <span class="text-dark"> Dashboard</span>
+            </div>
+            <div class="">
+                <ul>
+                    <li class="mb-3"> <img src="~/image/dimension_9728529.png" alt="logo" width="20" height="20" class="m-3"> <a asp-action="Index" class="text-dark">Product</a> </li>
+                    <li class="mb-3"> <img src="~/image/package_3838291.png" alt="Logo" width="20" height="20" class="m-3 "> <a asp-action="ProductDetails" class="text-dark">ProductDetails</a> </li>
+                    <li class="mb-3"> <img src="~/image/credit-card_4021708.png" alt="Logo" width="20" height="20" class="m-3 "> <a asp-action="PaymentAccept" class="text-dark">PaymentAccept</a> </li>
+                    <li class="mb-3"> <img src="~/image/costumer_6012670.png" alt="Logo" width="20" height="20" class="m-3 "> <a asp-action="Index" class="text-dark">Costumers</a> </li>
+                    <li class="mb-3"> <img src="~/image/invoice_5952795.png" alt="Logo" width="20" height="20" class="m-3 "><a asp-action="Index" class="text-dark">Invoice</a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-8 sidebar">
+            <div class="row justify-content-between">
+
+                <div class="col-3">
+                    <form asp-action="ProductDetails" method="post" class="form">
+                        <div class="mt-1">
+                            <input type="text" name="ProductName" id="ProductName" for="ProductId" class="form-control form-input" placeholder="Search... " />
+                        </div>   
+                    </form>
+
+                </div>
+                <div class="col-3">
+                    <select class="form-select form-select-solid" name="ProductId" onchange="this.form.submit()">
+                        <option></option>
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Id">@item.ProductName</option>
+
+                        }
+                    </select>
+
+
+                </div>
+                <div class="col-1 pp ">
+                    <button type="button" class=" m-2 bkg" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                </div>
+            </div>
+            <div class="container bbbb">
+                <div class="row">
+                    <div class="card-body pt-0 ">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5 " id="kt_customers_table">
+                            <thead>
+                                <tr class="text-center text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+
+
+                                    <th class="min-w-125px " style="font-family:cairo">Description</th>
+                                    <th class="min-w-125px " style="font-family:cairo">Price</th>
+                                    <th class="min-w-125px " style="font-family:cairo">Model</th>
+                                    <th class="min-w-125px " style="font-family:cairo">Qty</th>
+                                    <th class="min-w-125px " style="font-family:cairo">Color </th>
+                                    <th class="min-w-125px " style="font-family:cairo">Image</th>
+                                    <th class="min-w-125px " style="font-family:cairo" colspan="2">Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="fw-semibold text-gray-600">
+                                @if (Model != null)
+                                {
+                                    @foreach (var item in ProductDetails)
+                                    {
+                                        <tr class="text-center">
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Model</td>
+                                            <td>@item.Qty</td>
+                                            <td>@item.Color</td>
+                                            <td>@item.Image</td>
+                                            <td class="m-0"><a asp-action="DeleteDetails" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a></td>
+                                            <td class="text-end"><a asp-action="EditDetails" asp-route-id="@item.Id"><i class="fa fa-edit "></i></a></td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="AddProductDetails" method="post">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="ProductName">Product Name</label>
+                            <select name="ProductId" class="form-control form-control-sm">
+                                @if (Model != null)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName</option>
+                                    }
+                                }
+                            </select>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="ProductName">Description</label>
+                                    <input type="text" name="ProductName" id="ProductName" class="form-control form-control-sm" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="Price">Price</label>
+                                    <input type="number" name="Price" id="Price" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="Model">Model</label>
+                                    <input type="text" name="Model" id="Model" class="form-control form-control-sm" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="Qty">Qty</label>
+                                    <input type="number" name="Qty" id="Qty" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="Color">Color</label>
+                                    <input type="text" name="Color" id="Color" class="form-control form-control-sm" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="Image">Image</label>
+                                    <input type="text" name="Image" id="Image" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

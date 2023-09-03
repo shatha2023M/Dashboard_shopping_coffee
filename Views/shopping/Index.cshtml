@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = "~/Views/Shared/_Layoutshopping.cshtml";
+}
+<style>
+    .landing {
+        position: relative;
+    }
+
+        .landing::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -40px;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right,#c9d6ff, #e2e2e2);
+            z-index: -1;
+            transform: skewY(-6deg);
+            transform-origin: top left;
+        }
+
+        .landing .container {
+            min-height: calc(100vh - 72px);
+            display: flex;
+            align-items: center;
+            padding-bottom: 120px;
+        }
+
+        .landing .text {
+            flex: 1;
+        }
+
+            .landing .text h1 {
+                font-size: 40px;
+                margin: 0;
+                letter-spacing: -2px;
+            }
+
+            .landing .text p {
+                font-size: 23px;
+                line-height: 1.7;
+                margin: 5px 0 0;
+                color: #666;
+                max-width: 500px;
+            }
+
+
+        .landing .image img {
+            position: relative;
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+            animation: up-and-down 5s linear infinite;
+        }
+
+    .text {
+        color: #666;
+        text-align: center;
+        letter-spacing: 1.6px;
+    }
+
+    h2 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: #666;
+    }
+
+        h2:after {
+            display: inline-block;
+            margin: 0 0 8px 20px;
+            height: 3px;
+            content: " ";
+            text-shadow: none;
+            background-color: #999;
+            width: 140px;
+        }
+
+        h2:before {
+            display: inline-block;
+            margin: 0 20px 8px 0;
+            height: 3px;
+            content: " ";
+            text-shadow: none;
+            background-color: #999;
+            width: 140px;
+        }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+        .card:hover::before {
+            width: 100%;
+        }
+
+
+    .btn {
+        background-color: white;
+        border-radius: 20px;
+        border: 1px solid white;
+    }
+
+   
+</style>
+
+<title>COFFEE SHATHA</title>
+
+<div class="landing">
+    <div class="container">
+
+        <div class="text">
+            <p>Happiness Starts with coffee.</p>
+            <p>Get your Coffee machine to Have a better mood.</p>
+            <a href="#direction"> <button type="submit" asp-action="index" class="btn">shop Naw</button></a>
+
+        </div>
+
+        <div class="image">
+            <img src="~/image/coffee-machine_1268783.png" width=233; height=233; />
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row justify-content-center mb-3">
+    <div class="col-6 ">
+        <h2 id="direction">
+            Coffee Machines
+        </h2>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="~/assets/images/@item.Image" class="card-img-top"
+                         alt="image" width="250px" height="250px" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@item.ProductName</h5>
+                        <div class="">
+                            <div class="price text-center">@item.Price SAR</div>
+                            <div class="btn">
+                                <a asp-action="ProductDetails" asp-route-id="@item.Id" class="btn">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

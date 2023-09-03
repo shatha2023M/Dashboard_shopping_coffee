@@ -1,0 +1,27 @@
+﻿@model PaymentAccept
+@{
+}
+
+
+<div class="container mt-4">
+    <form asp-action="PaymentAccept" method="post">
+        <div class="row d-flex-content-center justify-content-center">
+            <div class="col-6 text-center">
+                <img src="~/image/online-payment-security-concept-3d-phone-bill.jpg" alt="imege" width="260" height="260">
+            </div>
+        </div>
+
+        <div class="row d-flex-content-center justify-content-center">
+            <div class="col-6 text-center">
+                <div class="card p-5">
+                    <h3>Please Enter the payment card</h3>
+                    <input type="text" asp-for="@Model.payment" class="form-control " placeholder="ex:VISA">
+                    <span asp-validation-for="@Model.payment" class="text-danger"></span>
+                    <hr>
+                    <button type="submit" class="btn btn-primary ">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

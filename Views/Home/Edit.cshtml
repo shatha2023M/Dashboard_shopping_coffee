@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+}
+
+<title>Edit</title>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <h1>Modify product </h1>
+            <form asp-action="UpdateProducts" method="post">
+                <input type="hidden" asp-for="@Model.Id" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="ProductName">ProductName</label>
+                        <input asp-for="@Model.ProductName" class="form-control" id="ProductName" name="ProductName" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Image">Image</label>
+                        <input asp-for="@Model.Image" class="form-control" id="Image" name="Image" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Price">Price</label>
+                        <input asp-for="@Model.Price" class="form-control" id="Price" name="Price" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 d-flex justify-content-center mt-2">
+                        <button type="submit" class="btn btn-primary p-2">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

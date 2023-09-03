@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Dashboard_shopping_coffee.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="Icon" href="~/image/ecommerce_4141160.png">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <img src="~/image/coffee_1701316.png" height="28" alt="shopping">
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" herf="navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a asp-action="index" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link">offers</a>
+                        <a href="#" class="nav-item nav-link"><i class="fa fa-heart " aria-hidden="true"><spam class="px-1">favorite</spam></i></a>
+                        <a href="#" class="nav-item nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="navbar-nav ms-auto">
+                        <a href="/Identity/Account/Login" class="nav-item nav-link"> <i class="fa fa-sign-in m-2" aria-hidden="true"></i>Login</a>
+                        <a href="/Identity/Account/Register" class="nav-item nav-link">  <i class="fa fa-user-plus m-2 " aria-hidden="true"></i>Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div>
+        @RenderBody()
+    </div>
+    <footer class="text-center " style="background-color: #e2e2e2">
+
+        <section class="mt-5">
+            <div class="row text-center d-flex justify-content-center pt-5">
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-dark">About us</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-dark">Products</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-dark">Awards</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-dark">Help</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-dark">Contact</a>
+                    </h6>
+                </div>
+            </div>
+
+        </section>
+        <div class="text-center ">
+            © 2023
+        </div>
+
+    </footer>
+</body>
+</html>

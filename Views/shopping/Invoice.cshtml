@@ -1,0 +1,70 @@
+﻿@model Invoice
+@{
+    Layout = "~/Views/Shared/_Layoutshopping.cshtml";
+}
+<style>
+    .content{
+        width:fit-content;
+    }
+</style>
+
+<div class="container mt-5 content">
+<div class="card">
+    <div class="card-body mx-4">
+        <div class="container">
+            <p class="my-5 mx-5" style="font-size: 30px;">Thank for your purchase</p>
+                <div class="text-center">
+                    <img src="~/image/check_1828640.png" width="80" height="80"  />
+            </div>
+            <br />
+            <div class="row">
+                <ul class="list-unstyled">
+                    <li class="text-muted mt-1"><span class="text-black">Invoice</span> #12345</li>
+                    <li class="text-black mt-1">3 /9 /2023</li>
+                </ul>
+                <hr>
+                <div class="col-xl-10">
+                        <p>Subtotal</p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">
+                        @Model.Price    
+                    </p>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xl-10">
+                        <p>Shipping</p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">
+                        
+                    </p>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xl-10">
+                        <p>Total(Incl. taxes)</p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">
+                            
+                    </p>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+            <div class="row text-black">
+
+                <div class="col-xl-12">
+                    <p class="float-end fw-bold">
+                        Total: $10.00
+                    </p>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+        </div>
+    </div>
+</div>
+</div>

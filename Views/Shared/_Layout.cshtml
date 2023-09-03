@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Dashboard_shopping_coffee.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="Icon" href="~/image/menu_3388614.png">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse bkg">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Dashboard Shop</a>
+                </div>
+                <ul class="nav navbar-na>v navbar-right m-1">
+                    <a class="nav-link text-white" id="login" href="/Identity/Account/Login">
+                        <i class="fa fa-sign-in m-2" aria-hidden="true"></i>Login
+                    </a>
+                    <a class="nav-link text-white" id="register" href="/Identity/Account/Register">
+                        <i class="fa fa-user-plus m-2 " aria-hidden="true"></i>Register
+                    </a>
+
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-white border-0" >
+                            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                        </button>
+                    </form>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 1445 - Dashboard_shopping_coffee - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

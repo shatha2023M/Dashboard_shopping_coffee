@@ -1,0 +1,52 @@
+﻿@model ProductDetails
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit Page";
+}
+
+<title>Edit</title>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <h1 class="mt-3">Modify ProductDetails </h1>
+            <form asp-action="UpdateDetails" method="post">
+                <input type="hidden" asp-for="@Model.Id" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="Description">Description</label>
+                        <input asp-for="@Model.ProductName" class="form-control" id="Description" name="Description" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Price">Price</label>
+                        <input asp-for="@Model.Price" class="form-control" id="Price" name="Price" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Model">Model</label>
+                        <input asp-for="@Model.Model" class="form-control" id="Model" name="Model" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Color">Color</label>
+                        <input asp-for="@Model.Color" class="form-control" id="Color" name="Color" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Qty">Qty</label>
+                        <input asp-for="@Model.Qty" class="form-control" id="Qty" name="Qty" />
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="Image">Image</label>
+                        <input asp-for="@Model.Image" class="form-control" id="Image" name="Image" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 d-flex justify-content-center mt-2">
+                        <button type="submit" class="btn btn-primary p-2">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
